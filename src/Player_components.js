@@ -163,12 +163,12 @@ Crafty.c("Slot",
 
 	hightlight: function()
 	{
-		this.image("tile_mouse_over.png");
+		this.image("images/tile_mouse_over.png");
 	},
 
 	unHighlight: function()
 	{
-		this.image("tile.png");
+		this.image("images/tile.png");
 	},
 
 	makeAvailable: function()
@@ -336,12 +336,12 @@ Crafty.c("Card",
 
 		highlight: function()
 		{
-			this.image("card_"+this.name+"_mouse_over.png");
+			this.image("images/card_"+this.name+"_mouse_over.png");
 		},
 
 		unHighlight: function()
 		{
-			this.image("card_"+this.name+".png");
+			this.image("images/card_"+this.name+".png");
 		},
 
 		makeUnavailable: function()
@@ -417,7 +417,7 @@ Crafty.c("Hand",
 			//aCard.count = ++this.soldierCount;
 
 			aCard.name ="soldier";
-			aCard.image("card_"+aCard.name+".png");
+			aCard.image("images/card_"+aCard.name+".png?"+new Date().getTime());
 
 			aCard.deployTime = 40;
 			aCard.resource = 20;
@@ -436,7 +436,7 @@ Crafty.c("Hand",
 		else
 		{
 			aCard.name = "tower";
-			aCard.image("card_"+aCard.name+".png");
+			aCard.image("images/card_"+aCard.name+".png?"+new Date().getTime());
 
 			aCard.deployTime = 90;
 			aCard.resource = 50;

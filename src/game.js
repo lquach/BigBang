@@ -8,7 +8,7 @@ window.onload = function()
 	
 	// Sprite
 
-	Crafty.sprite(32, "Monster_Sprites.png",
+	Crafty.sprite(32, "images/Monster_Sprites.png",
 	{
 		soldier0: [1, 0],
 		soldier1: [4, 0],
@@ -16,7 +16,7 @@ window.onload = function()
 		soldier3: [10, 0]
 	});
 
-	Crafty.sprite(58, "Tower_Sprites.png",
+	Crafty.sprite(58, "images/Tower_Sprites.png",
 	{
 		tower0: [2, 1],
 		tower1: [2, 0]
@@ -48,8 +48,11 @@ window.onload = function()
 	for (var i = 0; i < 4; i++)
 		for (var j = 0; j < 3; j++)
 		{
+			// Need to add ? and a unique number behind
+			// to avoid caching the same image
+			// so the next image can be loaded
 			var aSlot = Crafty.e("DOM, Slot")
-					.image("tile.png")
+					.image("images/tile.png?"+new Date().getTime())
 					.attr({x: j * 59 + startX, y: i * 71 + startY, player: leftPlayer});
 			leftPlayer.slots.push(aSlot);
 		}
@@ -78,7 +81,7 @@ window.onload = function()
 		for (var j = 0; j < 3; j++)
 		{
 			var aSlot = Crafty.e("DOM, Slot")
-					.image("tile.png")
+					.image("images/tile.png?"+new Date().getTime())
 					.attr({x: j * 59 + startX, y: i * 71 + startY, player: rightPlayer});
 			rightPlayer.slots.push(aSlot);
 		}
@@ -90,56 +93,4 @@ window.onload = function()
 	rightPlayer.resource = Crafty.e("DOM, ResourceBar")
 		.attr({x: WIDTH - 135, y: HEIGHT - 45, w: 0, h: 11})
 		.Resource(100);
-
-/*
-	// HUD Setting
-	//*******************************************************************************************
-	//*******************************************************************************************
-	//*******************************************************************************************
-
-	// Left Player
-	//*******************************************************************************************
-	//*******************************************************************************************
-	//*******************************************************************************************
-	// Need to set w and h to detect Click area
-
-	var leftUnitButton = Crafty.e("HTML, Mouse")
-			.attr({x: WIDTH/4 - 170, y: HEIGHT-30, z: HEIGHT-30, w: 46, h:20})
-			.replace("<button type='button' style='height: 21px; width: 47px'>Unit</button>")
-			.bind("Click", function()
-				{
-					leftPlayer.createUnit(2);
-				});
-
-
-	var leftTowerButton = Crafty.e("HTML, Mouse")
-			.attr({x: leftUnitButton.x + leftUnitButton.w + 7, y: HEIGHT-30, z: HEIGHT-30, z: HEIGHT-30, w: 59, h: 20})
-			.replace("<button type='button' style='height: 21px; width: 60px'>Tower</button>")
-			.bind("Click", function()
-				{
-					leftPlayer.createTower(0);
-				});
-
-	// Right Player
-	//*******************************************************************************************
-	//*******************************************************************************************
-	//*******************************************************************************************
-	// Need to set w and h to detect Click area
-	var rightUnitButton = Crafty.e("HTML, Mouse")
-			.attr({x: WIDTH/4 * 3 + 50, y: HEIGHT-30, z: HEIGHT-30, w: 46, h:20})
-			.replace("<button type='button' style='height: 21px; width: 47px'>Unit</button>")
-			.bind("Click", function()
-				{
-					rightPlayer.createUnit(1);
-				});
-
-
-	var rightTowerButton = Crafty.e("HTML, Mouse")
-			.attr({x: rightUnitButton.x + rightUnitButton.w + 7, y: HEIGHT-30, z: HEIGHT-30, z: HEIGHT-30, w: 59, h: 20})
-			.replace("<button type='button' style='height: 21px; width: 60px'>Tower</button>")
-			.bind("Click", function()
-				{
-					rightPlayer.createTower(1);
-				});
-*/
 };
